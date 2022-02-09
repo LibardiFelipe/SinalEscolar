@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using SinalEscolar.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,11 @@ namespace SinalEscolar
 {
     public partial class Form1 : Form
     {
+        // Var em que ficará o id do último alarme tocado
+        private string _lastAlarmId;
+
+        public List<Alarm> Alarms = new List<Alarm>();
+
         public Form1()
         {
             InitializeComponent();
@@ -55,7 +61,7 @@ namespace SinalEscolar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using(var addForm = new AddForm())
+            using(var addForm = new AddForm(this))
             {
                 addForm.ShowDialog();
             }
@@ -66,6 +72,19 @@ namespace SinalEscolar
             var result = MessageBox.Show("Caso o programa seja fechado, o sinal não tocará mais.\nDeseja continuar?", "Sinal Escolar", MessageBoxButtons.YesNo);
             if (result != DialogResult.Yes)
                 e.Cancel = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Alarms)
+            {
+                var date = DateTime.Now;
+                MessageBox.Show($"id: {item.Id}\n" +
+                    $"dia {item.Day}\n" +
+                    $"time: {item.Time}\n" +
+                    $"song: {item.Song}\n" +
+                    $"today: {date.DayOfWeek}, {date.Hour}:{date.Minute}");
+            }
         }
     }
 }

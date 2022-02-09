@@ -1,4 +1,5 @@
 ﻿using SinalEscolar.Classes;
+using SinalEscolar.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +18,13 @@ namespace SinalEscolar
     {
         private string _selectedMusic;
         private bool _testingMusic;
+        private Form1 _form1;
 
-        public AddForm()
+        public AddForm(Form1 form1)
         {
             InitializeComponent();
 
+            _form1 = form1;
             comboBox1.SelectedIndex = 0;
         }
 
@@ -91,7 +94,30 @@ namespace SinalEscolar
             if (string.IsNullOrEmpty(_selectedMusic) || !File.Exists(_selectedMusic))
                 return;
 
+            _form1.Alarms.Add(new Alarm()
+            {
+                Day = GetDayById(comboBox1.SelectedIndex),
+                Time = $"{numericUpDown1.Value}:{numericUpDown2.Value}",
+                Song = _selectedMusic
+            });
 
+            MessageBox.Show("Adicionado!");
+            Close();
+        }
+
+        private static string GetDayById(int id)
+        {
+            switch (id)
+            {
+                case 0: return "Monday";
+                case 1: return "Tuesday";
+                case 2: return "Wednesday";
+                case 3: return "Thursday";
+                case 4: return "Friday";
+                case 5: return "Saturday";
+                case 6: return "Sunday";
+                default: throw new IndexOutOfRangeException();
+            }
         }
     }
 }
