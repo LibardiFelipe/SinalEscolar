@@ -54,6 +54,7 @@
       <DependentUpon>AddForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\MediaPlayer.cs" />
+    <Compile Include="Classes\Dialog.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -101,10 +101,8 @@ namespace SinalEscolar
                 Song = _selectedMusic,
                 IntervalInSeconds = Convert.ToInt32(numericUpDown3.Value)
             };
-            _form1.AddAlarm(alarm);
 
-            MessageBox.Show("Adicionado!");
-            Close();
+            _form1.AddAlarm(alarm);
         }
 
         private static string GetDayById(int id)

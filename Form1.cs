@@ -21,6 +21,8 @@ namespace SinalEscolar
         private List<Alarm> _alarms = new List<Alarm>();
         private string _dayOfWeek = DateTime.Now.DayOfWeek.ToString();
 
+        private AddForm _addForm;
+
         public Form1()
         {
             InitializeComponent();
@@ -28,7 +30,17 @@ namespace SinalEscolar
 
         public void AddAlarm(Alarm alarm)
         {
+            foreach (var item in _alarms)
+            {
+                if (item.Day == alarm.Day && item.Time == alarm.Time)
+                {
+                    Dialog.Show("Já existe um alarme com esse dia e horário cadastrado!", false, EMessageCode.Exclamation);
+                    return;
+                }
+            }
+
             this._alarms.Add(alarm);
+            _addForm.Close();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -57,7 +69,7 @@ namespace SinalEscolar
                 else
                 {
                     // Cria o objeto na chave caso ele não exista.
-                    var result = MessageBox.Show("Deseja iniciar o programa automaticamente ao ligar o computador?", "Sinal Escolar", MessageBoxButtons.YesNo);
+                    var result = Dialog.Show("Deseja iniciar o programa automaticamente ao ligar o computador?", true);
                     if (result == DialogResult.Yes)
                         key.SetValue(keyName, $"\"{Application.ExecutablePath}\"");
                 }
@@ -68,15 +80,13 @@ namespace SinalEscolar
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using(var addForm = new AddForm(this))
-            {
-                addForm.ShowDialog();
-            }
+            _addForm = new AddForm(this);
+            _addForm.ShowDialog();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var result = MessageBox.Show("Caso o programa seja fechado, o sinal não tocará mais.\nDeseja continuar?", "Sinal Escolar", MessageBoxButtons.YesNo);
+            var result = Dialog.Show("Caso o programa seja fechado, o sinal não tocará mais.\nDeseja continuar?", true);
             if (result != DialogResult.Yes)
                 e.Cancel = true;
         }
