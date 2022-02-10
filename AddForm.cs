@@ -94,12 +94,13 @@ namespace SinalEscolar
             if (string.IsNullOrEmpty(_selectedMusic) || !File.Exists(_selectedMusic))
                 return;
 
-            _form1.Alarms.Add(new Alarm()
+            var alarm = new Alarm()
             {
                 Day = GetDayById(comboBox1.SelectedIndex),
-                Time = $"{numericUpDown1.Value}:{numericUpDown2.Value}",
+                Time = $"{string.Format("{0:00}", numericUpDown1.Value)}:{string.Format("{0:00}", numericUpDown2.Value)}",
                 Song = _selectedMusic
-            });
+            };
+            _form1.AddAlarm(alarm);
 
             MessageBox.Show("Adicionado!");
             Close();

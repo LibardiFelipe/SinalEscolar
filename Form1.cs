@@ -15,13 +15,18 @@ namespace SinalEscolar
     public partial class Form1 : Form
     {
         // Var em que ficará o id do último alarme tocado
-        private string _lastAlarmId;
+        private List<string> _lastAlarmId = new List<string>();
 
-        public List<Alarm> Alarms = new List<Alarm>();
+        private List<Alarm> _alarms = new List<Alarm>();
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        public void AddAlarm(Alarm alarm)
+        {
+            this._alarms.Add(alarm);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -76,7 +81,7 @@ namespace SinalEscolar
 
         private void button2_Click(object sender, EventArgs e)
         {
-            foreach (var item in Alarms)
+            foreach (var item in _alarms)
             {
                 var date = DateTime.Now;
                 MessageBox.Show($"id: {item.Id}\n" +
@@ -85,6 +90,13 @@ namespace SinalEscolar
                     $"song: {item.Song}\n" +
                     $"today: {date.DayOfWeek}, {date.Hour}:{date.Minute}");
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Loopa por todos os alarmes e verifica qual que deve tocar
+
+            // Antes de toca-lo, verifica se ele já foi tocado anteriormente
         }
     }
 }
