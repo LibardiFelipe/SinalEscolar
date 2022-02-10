@@ -60,7 +60,7 @@ namespace SinalEscolar
             "Sexta-feira",
             "Sábado",
             "Domingo"});
-            this.comboBox1.Location = new System.Drawing.Point(74, 25);
+            this.comboBox1.Location = new System.Drawing.Point(64, 25);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(142, 21);
             this.comboBox1.TabIndex = 0;
@@ -68,7 +68,7 @@ namespace SinalEscolar
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(106, 9);
+            this.label1.Location = new System.Drawing.Point(96, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 1;
@@ -77,7 +77,7 @@ namespace SinalEscolar
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(125, 54);
+            this.label2.Location = new System.Drawing.Point(115, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 2;
@@ -85,7 +85,7 @@ namespace SinalEscolar
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(106, 70);
+            this.numericUpDown1.Location = new System.Drawing.Point(96, 70);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             23,
             0,
@@ -102,7 +102,7 @@ namespace SinalEscolar
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(147, 70);
+            this.numericUpDown2.Location = new System.Drawing.Point(137, 70);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             59,
             0,
@@ -115,7 +115,7 @@ namespace SinalEscolar
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(125, 98);
+            this.label3.Location = new System.Drawing.Point(115, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 6;
@@ -123,7 +123,7 @@ namespace SinalEscolar
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(86, 133);
+            this.button1.Location = new System.Drawing.Point(77, 133);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(58, 29);
             this.button1.TabIndex = 7;
@@ -133,16 +133,16 @@ namespace SinalEscolar
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(-5, 112);
+            this.label4.Location = new System.Drawing.Point(-5, 114);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(301, 16);
+            this.label4.Size = new System.Drawing.Size(281, 16);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Nenhuma";
+            this.label4.Text = "Não selecionada";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(147, 133);
+            this.button2.Location = new System.Drawing.Point(136, 133);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(58, 29);
             this.button2.TabIndex = 9;
@@ -157,7 +157,7 @@ namespace SinalEscolar
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(108, 178);
+            this.button3.Location = new System.Drawing.Point(98, 217);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 10;
@@ -167,14 +167,14 @@ namespace SinalEscolar
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(258, 108);
+            this.numericUpDown3.Location = new System.Drawing.Point(116, 186);
             this.numericUpDown3.Maximum = new decimal(new int[] {
-            60,
+            300,
             0,
             0,
             0});
             this.numericUpDown3.Minimum = new decimal(new int[] {
-            5,
+            10,
             0,
             0,
             0});
@@ -182,7 +182,7 @@ namespace SinalEscolar
             this.numericUpDown3.Size = new System.Drawing.Size(38, 20);
             this.numericUpDown3.TabIndex = 11;
             this.numericUpDown3.Value = new decimal(new int[] {
-            10,
+            30,
             0,
             0,
             0});
@@ -190,7 +190,7 @@ namespace SinalEscolar
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(255, 92);
+            this.label5.Location = new System.Drawing.Point(108, 170);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 12;
@@ -200,7 +200,7 @@ namespace SinalEscolar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(323, 255);
+            this.ClientSize = new System.Drawing.Size(270, 255);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.button3);

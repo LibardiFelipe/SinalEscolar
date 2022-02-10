@@ -81,19 +81,6 @@ namespace SinalEscolar
                 e.Cancel = true;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            foreach (var item in _alarms)
-            {
-                var date = DateTime.Now;
-                MessageBox.Show($"id: {item.Id}\n" +
-                    $"dia {item.Day}\n" +
-                    $"time: {item.Time}\n" +
-                    $"song: {item.Song}\n" +
-                    $"today: {date.DayOfWeek}, {date.Hour}:{date.Minute}");
-            }
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             // Loopa por todos os alarmes e verifica qual que deve tocar
@@ -106,21 +93,19 @@ namespace SinalEscolar
                 {
                     // Verifica se o alarme ainda NÃO foi tocado e o toca
                     if (!_lastAlarmIds.Contains(alarm.Id))
-                    {
-                        _lastAlarmIds.Add(alarm.Id);
-                        PlayAlarm(alarm.Song, alarm.IntervalInSeconds);
-                    }
+                        PlayAlarm(alarm);
                 }
             }
 
         }
 
-        private void PlayAlarm(string songPath, int segs)
+        private void PlayAlarm(Alarm alarm)
         {
-            MediaPlayer.Play(songPath);
+            _lastAlarmIds.Add(alarm.Id);
+            MediaPlayer.Play(alarm.Song);
 
             // Chama o timer pra parar de tocar depois de X segundos
-            stopSongTimer.Interval = segs * 1000;
+            stopSongTimer.Interval = alarm.IntervalInSeconds * 1000;
             stopSongTimer.Start();
         }
 

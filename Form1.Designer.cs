@@ -31,7 +31,6 @@ namespace SinalEscolar
         {
             this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.stopSongTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
@@ -45,16 +44,6 @@ namespace SinalEscolar
             this.button1.Text = "Adicionar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(365, 276);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(107, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "checar alarmes";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // timer1
             // 
@@ -71,7 +60,6 @@ namespace SinalEscolar
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 311);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -87,7 +75,6 @@ namespace SinalEscolar
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer stopSongTimer;
     }
