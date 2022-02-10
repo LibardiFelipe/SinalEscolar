@@ -5,12 +5,12 @@ namespace SinalEscolar.Classes
 {
     public static class MediaPlayer
     { 
-        public static void Play(string filePath)
+        public static void Play(string songPath)
         {
-            if (string.IsNullOrEmpty(filePath) || !File.Exists(filePath))
+            if (string.IsNullOrEmpty(songPath) || !File.Exists(songPath))
                 return;
 
-            Process.Start(filePath);
+            Process.Start(songPath);
         }
 
         public static void StopPlaying()

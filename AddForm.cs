@@ -98,7 +98,8 @@ namespace SinalEscolar
             {
                 Day = GetDayById(comboBox1.SelectedIndex),
                 Time = $"{string.Format("{0:00}", numericUpDown1.Value)}:{string.Format("{0:00}", numericUpDown2.Value)}",
-                Song = _selectedMusic
+                Song = _selectedMusic,
+                IntervalInSeconds = Convert.ToInt32(numericUpDown3.Value)
             };
             _form1.AddAlarm(alarm);
 

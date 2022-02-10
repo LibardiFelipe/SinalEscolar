@@ -12,5 +12,6 @@ namespace SinalEscolar.Models
         public string Day { get; set; }
         public string Time { get; set; }
         public string Song { get; set; }
+        public int IntervalInSeconds { get; set; }
     }
 }
