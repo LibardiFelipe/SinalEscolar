@@ -43,7 +43,7 @@ namespace SinalEscolar
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     _selectedMusic = ofd.FileName;
-                    label4.Text = ofd.SafeFileName;
+                    textBox1.Text = ofd.SafeFileName;
 
                     if (_testingMusic)
                         button2_Click(this, e);
@@ -108,14 +108,15 @@ namespace SinalEscolar
         private static string GetDayById(int id)
         {
             switch (id)
-            {
-                case 0: return "Monday";
-                case 1: return "Tuesday";
-                case 2: return "Wednesday";
-                case 3: return "Thursday";
-                case 4: return "Friday";
-                case 5: return "Saturday";
-                case 6: return "Sunday";
+                {
+                case 0: return "Daily";
+                case 1: return "Monday";
+                case 2: return "Tuesday";
+                case 3: return "Wednesday";
+                case 4: return "Thursday";
+                case 5: return "Friday";
+                case 6: return "Saturday";
+                case 7: return "Sunday";
                 default: throw new IndexOutOfRangeException();
             }
         }

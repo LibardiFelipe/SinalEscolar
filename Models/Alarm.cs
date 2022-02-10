@@ -13,5 +13,6 @@ namespace SinalEscolar.Models
         public string Time { get; set; }
         public string Song { get; set; }
         public int IntervalInSeconds { get; set; }
+        public bool bPlayed { get; set; } = false;
     }
 }

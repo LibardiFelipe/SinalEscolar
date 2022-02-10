@@ -32,7 +32,8 @@ namespace SinalEscolar
         {
             foreach (var item in _alarms)
             {
-                if (item.Day == alarm.Day && item.Time == alarm.Time)
+                if ((item.Day == alarm.Day && item.Time == alarm.Time) ||
+                    (item.Day == "Daily" && item.Time == alarm.Time))
                 {
                     Dialog.Show("Já existe um alarme com esse dia e horário cadastrado!", false, EMessageCode.Exclamation);
                     return;
@@ -47,6 +48,10 @@ namespace SinalEscolar
         {
             // Seta o programa pra iniciar com o windows
             StartWithWindows();
+
+            // TODO: Carregar os alarmes salvos de um arquivo
+
+            // TODO: Atualizar a lista exibindo o status dos alarmes
         }
 
         public static void StartWithWindows()
@@ -94,19 +99,25 @@ namespace SinalEscolar
         private void timer1_Tick(object sender, EventArgs e)
         {
             // Loopa por todos os alarmes e verifica qual que deve tocar
-            foreach(var alarm in _alarms)
+            for (int i = 0; i < _alarms.Count; i++)
             {
-                // Se o dia do alarme tocar foi igual ao dia de hoje,
-                // e a hora do alarme for igual a hor atual...
+                // Se a hora do alarme bater com a hora atual
+                // E o dia do alarme for "diário" ou também bater com
+                // o dia atual...
                 var date = DateTime.Now;
-                if (alarm.Day == _dayOfWeek && alarm.Time == $"{date.Hour}:{date.Minute}")
+                if (_alarms[i].Time == $"{date.Hour}:{date.Minute}" &&
+                    (_alarms[i].Day == _dayOfWeek || _alarms[i].Day == "Daily"))
                 {
                     // Verifica se o alarme ainda NÃO foi tocado e o toca
-                    if (!_lastAlarmIds.Contains(alarm.Id))
-                        PlayAlarm(alarm);
+                    if (!_lastAlarmIds.Contains(_alarms[i].Id))
+                    {
+                        PlayAlarm(_alarms[i]);
+                        _alarms[i].bPlayed = true;
+
+                        // TODO: Atualizar a lista exibindo o status dos alarmes
+                    }
                 }
             }
-
         }
 
         private void PlayAlarm(Alarm alarm)
@@ -115,8 +126,11 @@ namespace SinalEscolar
             MediaPlayer.Play(alarm.Song);
 
             // Chama o timer pra parar de tocar depois de X segundos
-            stopSongTimer.Interval = alarm.IntervalInSeconds * 1000;
-            stopSongTimer.Start();
+            if (alarm.IntervalInSeconds > 0)
+            {
+                stopSongTimer.Interval = alarm.IntervalInSeconds * 1000;
+                stopSongTimer.Start();
+            }
         }
 
         private void stopSongTimer_Tick(object sender, EventArgs e)

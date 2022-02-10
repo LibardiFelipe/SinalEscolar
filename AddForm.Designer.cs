@@ -37,12 +37,12 @@ namespace SinalEscolar
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button3 = new System.Windows.Forms.Button();
             this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
@@ -53,6 +53,7 @@ namespace SinalEscolar
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "Diáriamente",
             "Segunda-feira",
             "Terça-feira",
             "Quarta-feira",
@@ -60,7 +61,7 @@ namespace SinalEscolar
             "Sexta-feira",
             "Sábado",
             "Domingo"});
-            this.comboBox1.Location = new System.Drawing.Point(64, 25);
+            this.comboBox1.Location = new System.Drawing.Point(63, 25);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(142, 21);
             this.comboBox1.TabIndex = 0;
@@ -68,7 +69,7 @@ namespace SinalEscolar
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(96, 9);
+            this.label1.Location = new System.Drawing.Point(95, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 1;
@@ -77,7 +78,7 @@ namespace SinalEscolar
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(115, 54);
+            this.label2.Location = new System.Drawing.Point(114, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 13);
             this.label2.TabIndex = 2;
@@ -85,7 +86,7 @@ namespace SinalEscolar
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(96, 70);
+            this.numericUpDown1.Location = new System.Drawing.Point(95, 70);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             23,
             0,
@@ -102,7 +103,7 @@ namespace SinalEscolar
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(137, 70);
+            this.numericUpDown2.Location = new System.Drawing.Point(136, 70);
             this.numericUpDown2.Maximum = new decimal(new int[] {
             59,
             0,
@@ -115,7 +116,7 @@ namespace SinalEscolar
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(115, 98);
+            this.label3.Location = new System.Drawing.Point(114, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(41, 13);
             this.label3.TabIndex = 6;
@@ -123,7 +124,7 @@ namespace SinalEscolar
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(77, 133);
+            this.button1.Location = new System.Drawing.Point(76, 143);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(58, 29);
             this.button1.TabIndex = 7;
@@ -131,18 +132,9 @@ namespace SinalEscolar
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(-5, 114);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(281, 16);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Não selecionada";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(136, 133);
+            this.button2.Location = new System.Drawing.Point(135, 143);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(58, 29);
             this.button2.TabIndex = 9;
@@ -157,7 +149,7 @@ namespace SinalEscolar
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(98, 217);
+            this.button3.Location = new System.Drawing.Point(97, 230);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 10;
@@ -167,14 +159,9 @@ namespace SinalEscolar
             // 
             // numericUpDown3
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(116, 186);
+            this.numericUpDown3.Location = new System.Drawing.Point(115, 199);
             this.numericUpDown3.Maximum = new decimal(new int[] {
             300,
-            0,
-            0,
-            0});
-            this.numericUpDown3.Minimum = new decimal(new int[] {
-            10,
             0,
             0,
             0});
@@ -190,22 +177,31 @@ namespace SinalEscolar
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(108, 170);
+            this.label5.Location = new System.Drawing.Point(49, 180);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 13);
+            this.label5.Size = new System.Drawing.Size(170, 13);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Segundos";
+            this.label5.Text = "Segundos (0 para tocar até o final)";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(11, 117);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(246, 20);
+            this.textBox1.TabIndex = 13;
+            this.textBox1.Text = "nenhuma";
             // 
             // AddForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(270, 255);
+            this.ClientSize = new System.Drawing.Size(269, 261);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.numericUpDown3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.numericUpDown2);
@@ -239,11 +235,11 @@ namespace SinalEscolar
         private System.Windows.Forms.NumericUpDown numericUpDown2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.NumericUpDown numericUpDown3;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
