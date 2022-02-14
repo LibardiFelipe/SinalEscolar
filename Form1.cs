@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace SinalEscolar
         private List<string> _lastAlarmIds = new List<string>();
 
         private List<Alarm> _alarms = new List<Alarm>();
-        private string _dayOfWeek = DateTime.Now.DayOfWeek.ToString();
+        private readonly string _dayOfWeek = DateTime.Now.DayOfWeek.ToString();
 
         private AddForm _addForm;
 
@@ -40,8 +41,11 @@ namespace SinalEscolar
                 }
             }
 
-            this._alarms.Add(alarm);
+            _alarms.Add(alarm);
             _addForm.Close();
+
+            // Atualiza a lista com os alarmes
+            UpdateListView();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -51,10 +55,66 @@ namespace SinalEscolar
 
             // TODO: Carregar os alarmes salvos de um arquivo
 
-            // TODO: Atualizar a lista exibindo o status dos alarmes
+            // Atualiza a lista com os alarmes
+            UpdateListView();
         }
 
-        public static void StartWithWindows()
+        private void UpdateListView()
+        {
+            listView1.Items.Clear();
+
+            foreach(var item in _alarms)
+            {
+                string played = item.bPlayed ? "Tocado" : "Em espera";
+                string[] row = { item.Time, ToPtBr(item.Day), ToSafeFileName(item.Song), ToTime(item.IntervalInSeconds), $"{played}"};
+                var li = new ListViewItem(row);
+                listView1.Items.Add(li);
+            }
+        }
+
+        private string ToTime(int seconds)
+        {
+            if (seconds == 0)
+                return "Até acabar";
+
+            return $"{seconds} segundos";
+        }
+
+        private string ToSafeFileName(string path)
+        {
+            var fileName = Path.GetFileName(path);
+            // Remove o . + a extensão do nome do arquivo
+            // (suponhando que ele seja .xxx que é o que todos devem ser né...)
+            fileName = fileName.Remove(fileName.Length - 4, 4);
+            return fileName;
+        }
+
+        private string ToPtBr(string day)
+        {
+            switch (day)
+            {
+                case "Daily":
+                    return "Diário";
+                case "Monday":
+                    return "Segunda-feira";
+                case "Tuesday":
+                    return "Terça-feira";
+                case "Wednesday":
+                    return "Quarta-feira";
+                case "Thursday":
+                    return "Quinta-feira";
+                case "Friday":
+                    return "Sexta-feira";
+                case "Saturday":
+                    return "Sábado";
+                case "Sunday":
+                    return "Domingo";
+                default:
+                    return "BAD_DATE";
+            }
+        }
+
+        public void StartWithWindows()
         {
             var subKeyPath = @"SOFTWARE\Microsoft\Windows\CurrentVersion\Run";
             var keyName = "Sinal Escolar";
@@ -105,7 +165,9 @@ namespace SinalEscolar
                 // E o dia do alarme for "diário" ou também bater com
                 // o dia atual...
                 var date = DateTime.Now;
-                if (_alarms[i].Time == $"{date.Hour}:{date.Minute}" &&
+                var hour = string.Format("{0:00}", date.Hour);
+                var minutes = string.Format("{0:00}", date.Minute);
+                if (_alarms[i].Time == $"{hour}:{minutes}" &&
                     (_alarms[i].Day == _dayOfWeek || _alarms[i].Day == "Daily"))
                 {
                     // Verifica se o alarme ainda NÃO foi tocado e o toca
@@ -114,7 +176,8 @@ namespace SinalEscolar
                         PlayAlarm(_alarms[i]);
                         _alarms[i].bPlayed = true;
 
-                        // TODO: Atualizar a lista exibindo o status dos alarmes
+                        // Atualiza a lista com os alarmes
+                        UpdateListView();
                     }
                 }
             }
